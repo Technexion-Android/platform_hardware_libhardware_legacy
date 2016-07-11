@@ -64,7 +64,12 @@ ifeq ($(BOARD_WLAN_DEVICE),UNITE)
 ifeq ($(TARGET_PRODUCT),sabresd_7d)
   LOCAL_CFLAGS += -DSABRESD_7D
 endif
+
+ifeq ($(BOARD_WLAN_BCM),BCM4330)
+  LOCAL_SRC_FILES += wifi/wifi_bcm4330.c
+else
   LOCAL_SRC_FILES += wifi/wifi_unite.c
+endif
 else
   LOCAL_SRC_FILES += wifi/wifi.c
   LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../external/wpa_supplicant_8/src/common
